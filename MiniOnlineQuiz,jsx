@@ -1,0 +1,79 @@
+import { useState } from "react";
+import "./MiniOnlineQuiz.css";
+
+function MiniOnlineQuiz() {
+  const quizData = [
+    {
+      question: "Which language is used to build web pages?",
+      options: ["Python", "HTML", "C++", "Java"],
+      correct: "HTML",
+    },
+    {
+      question: "Which language is used for styling?",
+      options: ["CSS", "PHP", "SQL", "C"],
+      correct: "CSS",
+    },
+    {
+      question: "React is a _____?",
+      options: ["Framework", "Library", "Language", "Database"],
+      correct: "Library",
+    },
+  ];
+
+  const [index, setIndex] = useState(0);
+  const [score, setScore] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
+
+  const handleAnswer = (option) => {
+    if (option === quizData[index].correct) {
+      setScore(score + 1);
+    }
+
+    if (index + 1 < quizData.length) {
+      setIndex(index + 1);
+    } else {
+      setIsFinished(true);
+    }
+  };
+
+  return (
+    <div className="app-container">
+      <div className="quiz-card">
+        <h1 className="quiz-heading">Mini Quiz</h1>
+
+        {!isFinished ? (
+          <>
+            <h3 className="question-text">
+              {quizData[index].question}
+            </h3>
+
+            <div className="options">
+              {quizData[index].options.map((item, i) => (
+                <button
+                  key={i}
+                  className="option-button"
+                  onClick={() => handleAnswer(item)}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+
+            <p className="score-display">
+              Score: {score}
+            </p>
+          </>
+        ) : (
+          <div className="result">
+            <h2>Quiz Completed 🎉</h2>
+            <p>
+              Final Score: {score} / {quizData.length}
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default MiniOnlineQuiz;
