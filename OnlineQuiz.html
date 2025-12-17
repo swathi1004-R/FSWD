@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Online Quiz</title>
+</head>
+<body>
+<form>
+<h1>PENGUIN QUIZ</h1>
+<br>
+1. What is the largest living penguin breed?<br>
+<input type="radio" name="q1" value="a">A) Gentoo<br>
+<input type="radio" name="q1" value="b">B) Adeilie<br>
+<input type="radio" name="q1" value="c">C) Emperor<br>
+<input type="radio" name="q1" value="d">D) Galapagos<br>
+<br>
+2. What is the most widely distributed Penguin in the Antartic?<br>
+<input type="radio" name="q2" value="a">A) Yellow Eyed<br>
+<input type="radio" name ="q2" value="b">B) Adeilie<br>
+<input type="radio" name ="q2" value="c">C) Little<br>
+<input type="radio" name ="q2" value="d">D) Humbold<br>
+<br>
+3. What do Emperor Penguin eat?<br>
+<input type="radio" name="q3" value="a">A) Small Antartic silver Fish<br>
+<input type="radio" name="q3" value="b">B) Squid<br>
+<input type="radio" name="q3" value="c">C) Antartic Krill<br>
+<input type="radio" name="q3" value="d">D) All of the above<br>
+<input type="submit" value="submit" onclick="CalculateMark()">
+<script>
+function CalculateMark()
+{
+const answers ={
+q1: document.querySelector('input[name="q1"]:checked').value,
+q2: document.querySelector('input[name="q2"]:checked').value,
+q3: document.querySelector('input[name="q3"]:checked').value
+};
+let score = 0;
+if ( answers.q1=='c' ) {
+score++;
+}
+if (answers.q2=='b' ) {
+score++;
+}
+if (answers.q3=='d') {
+score++;
+}
+confirm("Your Score is"+score);
+}
+</script>
+</form>
+</body>
+</html>
